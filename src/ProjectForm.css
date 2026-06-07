@@ -1,0 +1,158 @@
+/* ── Project Form ─────────────────────────────────── */
+.form-page {
+  min-height: 100vh;
+  padding: 20px var(--g) 10px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.form-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--acc);
+  margin-bottom: 14px;
+}
+.form-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--acc);
+}
+
+.form-heading {
+  font-family: var(--ff-d);
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 52px);
+  letter-spacing: -.04em;
+  line-height: 1.08;
+  margin-bottom: 14px;
+}
+.form-heading em {
+  font-style: italic;
+  color: var(--acc);
+}
+
+.form-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+
+.form-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.form-field label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.form-page input,
+.form-page textarea,
+.form-page select {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  font-size: 14px;
+  font-family: var(--ff-b);
+  background: var(--white);
+  color: var(--dark);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.form-page input:focus,
+.form-page textarea:focus,
+.form-page select:focus {
+  border-color: var(--acc);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, .08);
+}
+.form-page input::placeholder,
+.form-page textarea::placeholder { color: #bbb; }
+
+.form-page select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.form-page textarea { resize: vertical; min-height: 140px; }
+
+.form-page button[type="submit"] {
+  align-self: flex-start;
+  background: var(--dark);
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--ff-b);
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background .2s, transform .15s;
+}
+.form-page button[type="submit"]:hover {
+  background: var(--acc);
+  transform: translateY(-2px);
+}
+
+/* Success state */
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--acc-lt);
+  color: var(--acc);
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.form-btn-back {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--acc);
+  cursor: pointer;
+  margin-top: 20px;
+  transition: opacity .2s;
+}
+.form-btn-back:hover { opacity: .7; }
