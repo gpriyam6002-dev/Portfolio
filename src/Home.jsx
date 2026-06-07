@@ -88,6 +88,11 @@ export default function Home() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    closeMenu();
+  };
+
   return (
     <>
       {/* ── Nav ───────────────────────────────────── */}
@@ -97,10 +102,10 @@ export default function Home() {
 
           {/* Desktop links */}
           <div className="nav-links">
-            <a href="#work">Work</a>
-            <a href="#services">Services</a>
-            <a href="#process">Process</a>
-            <a href="#contact">Contact</a>
+            <a onClick={() => scrollTo('work')}>Work</a>
+            <a onClick={() => scrollTo('services')}>Services</a>
+            <a onClick={() => scrollTo('process')}>Process</a>
+            <a onClick={() => scrollTo('contact')}>Contact</a>
           </div>
 
           {/* Right side: CTA + burger */}
@@ -119,10 +124,10 @@ export default function Home() {
 
       {/* Mobile nav drawer */}
       <div className={`mobile-nav ${menuOpen ? "mobile-nav-open" : ""}`}>
-        <a href="#work"     onClick={closeMenu}>Work</a>
-        <a href="#services" onClick={closeMenu}>Services</a>
-        <a href="#process"  onClick={closeMenu}>Process</a>
-        <a href="#contact"  onClick={closeMenu}>Contact</a>
+        <a onClick={() => scrollTo('work')}>Work</a>
+        <a onClick={() => scrollTo('services')}>Services</a>
+        <a onClick={() => scrollTo('process')}>Process</a>
+        <a onClick={() => scrollTo('contact')}>Contact</a>
         <Link to="/start-project" className="mobile-nav-cta" onClick={closeMenu}>
           Start a Project →
         </Link>
@@ -156,7 +161,7 @@ export default function Home() {
             </p>
 
             <div className="hero-acts r d4">
-              <a href="#work" className="btn-dark">View Our Work →</a>
+              <a onClick={() => scrollTo('work')} className="btn-dark">View Our Work →</a>
               <Link to="/start-project" className="btn-ghost">Start a Project</Link>
             </div>
 
@@ -207,7 +212,7 @@ export default function Home() {
         {/* Scroll hint */}
         <div className="scroll-hint">
           <div className="scroll-hint-line" />
-          <span hidden>scroll</span>
+          <span>scroll</span>
         </div>
       </section>
 
