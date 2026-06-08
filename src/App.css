@@ -84,7 +84,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,246,242,
 .trust-sep{width:4px;height:4px;border-radius:50%;background:var(--border);flex-shrink:0}
 
 /* Scroll hint */
-.scroll-hint{position:absolute;bottom:32px;left:var(--g);display:flex;align-items:center;gap:10px;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:.6}
+.scroll-hint{display:none;position:absolute;bottom:32px;left:var(--g);display:flex;align-items:center;gap:10px;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:.6}
 .scroll-hint-line{display:none;width:40px;height:1px;background:var(--muted);position:relative;overflow:hidden}
 .scroll-hint-line::after{content:'';position:absolute;display:none;top:0;left:-100%;width:100%;height:100%;background:var(--acc);animation:scroll-march 1.8s ease-in-out infinite}
 @keyframes scroll-march{0%{left:-100%}100%{left:100%}}
@@ -301,3 +301,81 @@ footer{background:var(--dark)}
 }
 
 .nav-links a, .mobile-nav a { cursor: pointer; }
+
+/* ── Theme toggle button ─────────────────────────── */
+.theme-toggle {
+  position: relative;
+  width: 52px; height: 28px;
+  border-radius: 99px;
+  background: var(--border);
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  display: flex; align-items: center;
+  padding: 0 4px;
+  transition: background .3s, border-color .3s;
+  flex-shrink: 0;
+}
+.theme-toggle-on { background: var(--acc); border-color: var(--acc); }
+.theme-toggle-thumb {
+  position: absolute;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--dark);
+  left: 4px;
+  transition: left .25s ease, background .3s;
+}
+.theme-toggle-on .theme-toggle-thumb { left: calc(100% - 22px); background: #fff; }
+.theme-toggle-icon {
+  position: absolute;
+  right: 5px; font-size: 11px;
+  transition: right .25s;
+}
+.theme-toggle-on .theme-toggle-icon { right: auto; left: 5px; }
+
+/* ── Dark theme variables ────────────────────────── */
+html[data-theme="dark"] {
+  --bg:     #111111;
+  --white:  #1a1a1a;
+  --dark:   #ebebeb;
+  --mid:    #c0c0c0;
+  --muted:  #777;
+  --border: rgba(255,255,255,0.1);
+  --acc-lt: rgba(124,58,237,.18);
+}
+
+/* Hardcoded backgrounds that need manual overrides */
+html[data-theme="dark"] nav          { background: rgba(17,17,17,.88); }
+html[data-theme="dark"] .nav-scrolled { background: rgba(17,17,17,.97); }
+html[data-theme="dark"] .mobile-nav  { background: rgba(17,17,17,.98); }
+html[data-theme="dark"] .browser-bar,
+html[data-theme="dark"] .wcard-browser { background: #2a2a2a; border-color: rgba(255,255,255,.08); }
+html[data-theme="dark"] .burl        { background: #333; color: #777; }
+
+/* ── Dark mode fixes ─────────────────────────────── */
+
+/* Sections that must stay dark regardless of theme */
+html[data-theme="dark"] .mq         { background: #0a0a0a; }
+html[data-theme="dark"] .cta-sec    { background: #0a0a0a; }
+html[data-theme="dark"] footer      { background: #0a0a0a; }
+
+/* Buttons using --dark as background */
+html[data-theme="dark"] .nav-cta,
+html[data-theme="dark"] .btn-dark,
+html[data-theme="dark"] .mobile-nav-cta,
+html[data-theme="dark"] .form-page button[type="submit"],
+html[data-theme="dark"] .scroll-top { background: var(--acc); color: #fff; }
+
+html[data-theme="dark"] .nav-cta:hover,
+html[data-theme="dark"] .btn-dark:hover,
+html[data-theme="dark"] .form-page button[type="submit"]:hover { background: var(--acc-dk); }
+
+/* Form inputs */
+html[data-theme="dark"] .form-page input,
+html[data-theme="dark"] .form-page textarea,
+html[data-theme="dark"] .form-page select {
+  background: #222;
+  color: #ebebeb;
+  border-color: rgba(255,255,255,.12);
+}
+html[data-theme="dark"] .form-page input::placeholder,
+html[data-theme="dark"] .form-page textarea::placeholder { color: #555; }

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import "./ProjectForm.css"
 
 // ── Data (cleaner than inline JSX) ──────────────────
 const MARQUEE_ITEMS = [
@@ -65,6 +64,9 @@ export default function Home() {
   const [menuOpen, setMenuOpen]   = useState(false);
   const [scrolled, setScrolled]   = useState(false);
   const [showTop,  setShowTop]    = useState(false);
+  const [theme,    setTheme]      = useState(() => localStorage.getItem('theme') || 'light');
+
+  const toggleTheme = () => setTheme(t => t === 'light' ? 'dark' : 'light');
 
   useEffect(() => {
     // Scroll reveal
@@ -85,6 +87,12 @@ export default function Home() {
 
     return () => { revealObs.disconnect(); window.removeEventListener("scroll", onScroll); };
   }, []);
+
+  // Apply theme to <html> and save to localStorage
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -110,6 +118,14 @@ export default function Home() {
 
           {/* Right side: CTA + burger */}
           <div className="nav-right">
+            <button
+              className={`theme-toggle ${theme === 'dark' ? 'theme-toggle-on' : ''}`}
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+            >
+              <span className="theme-toggle-thumb" />
+              <span className="theme-toggle-icon">{theme === 'dark' ? '🌙' : '☀️'}</span>
+            </button>
             <Link to="/start-project" className="nav-cta">Let's Talk</Link>
             <button
               className={`burger ${menuOpen ? "burger-open" : ""}`}
