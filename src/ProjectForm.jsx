@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./ProjectForm.css";
 
 export default function ProjectForm() {
   const [form, setForm] = useState({
