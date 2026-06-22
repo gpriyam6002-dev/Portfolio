@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { href } from "react-router-dom";
 
+
 // Simple inline social icons (lucide removed brand icons in newer versions)
 const FacebookIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -257,7 +258,9 @@ export default function IvasLanding() {
                 {dark ? <Moon size={10} className="text-violet-600" /> : <Sun size={10} className="text-amber-500" />}
               </span>
             </button>
-            <button className="hidden sm:inline-flex items-center gap-1.5 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 transition-all px-4 py-2 rounded-lg text-sm font-semibold shadow-lg shadow-violet-900/30 text-white">
+            <button 
+              onClick={() => scrollTo("contact")}
+              className="hidden sm:inline-flex items-center gap-1.5 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 transition-all px-4 py-2 rounded-lg text-sm font-semibold shadow-lg shadow-violet-900/30 text-white">
               Get Started
             </button>
             <button
@@ -320,10 +323,14 @@ export default function IvasLanding() {
             </p>
 
             <div className="flex flex-wrap items-center gap-4 mb-12">
-              <button className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 transition-all px-6 py-3.5 rounded-xl text-sm font-semibold shadow-lg shadow-violet-900/40">
+              <button
+                onClick={() => scrollTo("contact")}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 transition-all px-6 py-3.5 rounded-xl text-sm font-semibold shadow-lg shadow-violet-900/40">
                 Get Started <ArrowRight size={16} />
               </button>
-              <button className={`inline-flex items-center gap-2 border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all px-6 py-3.5 rounded-xl text-sm font-semibold ${dark ? "bg-text-slate-200" : "bg-white"}`}>
+              <button
+                onClick={() => scrollTo("portfolio")}
+                className={`inline-flex items-center gap-2 border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all px-6 py-3.5 rounded-xl text-sm font-semibold ${dark ? "bg-text-slate-200" : "bg-white"}`}>
                 <Eye size={16} /> View Portfolio
               </button>
             </div>
@@ -520,7 +527,7 @@ export default function IvasLanding() {
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 
-                  <span className="absolute top-3 left-3 bg-violet-600/90 text-white text-[10px] font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
+                  <span className="absolute top-3 right-3 bg-violet-600/90 text-white text-[10px] font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
                     {tag}
                   </span>
                 </div>
@@ -648,10 +655,14 @@ export default function IvasLanding() {
                 to the next level.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <button className="inline-flex items-center gap-2 bg-white text-violet-700 hover:bg-violet-50 transition-all px-6 py-3.5 rounded-xl text-sm font-semibold">
+                <button 
+                  onClick={() => scrollTo("contact")}
+                  className="inline-flex items-center gap-2 bg-white text-violet-700 hover:bg-violet-50 transition-all px-6 py-3.5 rounded-xl text-sm font-semibold">
                   Start Your Project <ArrowRight size={16} />
                 </button>
-                <button className="inline-flex items-center gap-2 border border-white/30 hover:bg-white/10 transition-all px-6 py-3.5 rounded-xl text-sm font-semibold text-white">
+                <button 
+                  onClick={() => scrollTo("pricing")}
+                  className="inline-flex items-center gap-2 border border-white/30 hover:bg-white/10 transition-all px-6 py-3.5 rounded-xl text-sm font-semibold text-white">
                   View Pricing Plans
                 </button>
               </div>
@@ -706,6 +717,7 @@ export default function IvasLanding() {
                 </ul>
 
                 <button
+                  onClick={() => scrollTo("contact")}
                   className={`w-full py-3 rounded-xl text-sm font-semibold transition-all ${
                     popular
                       ? "bg-white text-violet-700 hover:bg-violet-50"
