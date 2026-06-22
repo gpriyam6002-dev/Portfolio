@@ -62,15 +62,54 @@ const SERVICES = [
 ];
 
 const PORTFOLIO = [
-  { tag: "Web Design",      title: "Restaurant Website", desc: "Modern rustic site with online ordering.", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop", link: "https://gpriyam6002-dev.github.io/resturant-web/" },
-  { tag: "Branding",        title: "Clothing Brand",     desc: "Minimal fashion brand for a product line.", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop" },
-  { tag: "Real Estate",     title: "Beautiful Listing",  desc: "Luxury real estate listing with virtual tour.", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop" },
-  { tag: "Web Design",      title: "Gym Website",        desc: "High-energy design for class bookings.", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop", link: "https://gpriyam6002-dev.github.io/gym-web/" },
-  { tag: "Education",       title: "School Website",     desc: "Clean portal for admissions and info.", img: "school_pic.jpg" },
-  { tag: "Branding",        title: "Coffee Shop Brand",  desc: "Cozy identity for a local café chain.", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" },
-  { tag: "Real Estate",     title: "Real Estate Landing", desc: "Conversion-focused landing page.", img: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=80&w=800&auto=format&fit=crop" },
-  { tag: "Logo Collection",  title: "Logo Collection",   desc: "Diverse logo set for various clients.", img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop" },
-  { tag: "Social Media",     title: "Social Media Designs", desc: "Eye-catching post templates and stories.", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop" },
+  { tag: "Web Design",
+    title: "Restaurant Website",
+    desc: "Modern rustic site with online ordering.",
+    img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop",
+    link: "https://gpriyam6002-dev.github.io/resturant-web/",
+    live: true },
+  { tag: "Branding",
+    title: "Clothing Brand",
+    desc: "Minimal fashion brand for a product line.",
+    img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
+    link: "https://gpriyam6002-dev.github.io/Monolith/",
+    live: true },
+  { tag: "Real Estate",
+    title: "Beautiful Listing",
+    desc: "Luxury real estate listing with virtual tour.",
+    img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop",
+    link: "" },
+  { tag: "Web Design",
+    title: "Gym Website",
+    desc: "High-energy design for class bookings.",
+    img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
+    link: "https://gpriyam6002-dev.github.io/gym-web/",
+    live: true },
+  { tag: "Education",
+    title: "School Website",
+    desc: "Clean portal for admissions and info.",
+    img: "https://images.unsplash.com/photo-1606996704949-682f483be456?q=80&w=800&auto=format&fit=crop",
+    link: "" },
+  { tag: "Branding",
+    title: "Coffee Shop Brand",
+    desc: "Cozy identity for a local café chain.",
+    img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
+    link: "" },
+  { tag: "Real Estate",
+    title: "Real Estate Landing",
+    desc: "Conversion-focused landing page.",
+    img: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=80&w=800&auto=format&fit=crop",
+    link: "" },
+  { tag: "Logo Collection",
+    title: "Logo Collection",
+    desc: "Diverse logo set for various clients.",
+    img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop",
+    link: "" },
+  { tag: "Social Media",
+    title: "Social Media Designs",
+    desc: "Eye-catching post templates and stories.",
+    img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop",
+    link: "" },
 ];
 
 const WHY_US = [
@@ -446,18 +485,41 @@ export default function IvasLanding() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PORTFOLIO.map(({ tag, title, desc, img }) => (
-              <div
+            {PORTFOLIO.map(({ tag, title, desc, img, link, live }) => (
+              <a
                 key={title}
-                className={`group rounded-2xl overflow-hidden border transition-all duration-300 ${dark ? "bg-[#161425] border-white/8 hover:border-violet-500/40" : "bg-white border-slate-100 hover:border-violet-200 hover:shadow-lg"}`}
+                href={link || "#"}
+                target={link ? "_blank" : undefined}
+                rel={link ? "noopener noreferrer" : undefined}
+                className={`group block rounded-2xl overflow-hidden border transition-all duration-300 ${
+                  dark
+                    ? "bg-[#161425] border-white/8 hover:border-violet-500/40"
+                    : "bg-white border-slate-100 hover:border-violet-200 hover:shadow-lg"
+                } ${link ? "cursor-pointer" : "cursor-default"}`}
               >
                 <div className="relative h-44 overflow-hidden">
-                  <img
-                    src={img}
-                    alt={title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                  {live ? (
+                    <iframe
+                      src={link}
+                      title={title}
+                      className="absolute top-0 left-0 border-0 pointer-events-none"
+                      style={{
+                        transform: "scale(0.37)",
+                        transformOrigin: "top left",
+                        width: "1600px",
+                        height: "900px",
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={img}
+                      alt={title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+
                   <span className="absolute top-3 left-3 bg-violet-600/90 text-white text-[10px] font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
                     {tag}
                   </span>
@@ -466,7 +528,7 @@ export default function IvasLanding() {
                   <h3 className="font-semibold mb-1.5">{title}</h3>
                   <p className={`text-sm leading-relaxed ${dark ? "text-slate-500" : "text-slate-500"}`}>{desc}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
